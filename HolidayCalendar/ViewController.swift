@@ -18,7 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var totalSquares = [String]()
     let calendarHelper = CalendarHelper()
     
-    // MARK: viewDid
+    // MARK: viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,9 +76,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         totalSquares.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { 
-        collectionView.reloadData()
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // convert string to date
+//        let date = totalSquares[indexPath.item]
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd"
+        
+        // optional bind to ensure we have data
+//        if let strDate = dateFormatter.date(from: date) {
+//            print(strDate)
+//            // assign selectedDate
+//            selectedDate = strDate
+//        }
+        // reload collectionView
+//        collectionView.reloadData()
     }
     
     // actions

@@ -22,19 +22,27 @@ class CalendarHelper {
         return calendar.date(byAdding: .month, value: -1, to: date)!
     }
     
-    // format month, return month in text
+    // format month, return month as string
     func monthString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
         return dateFormatter.string(from: date)
     }
     
-    // format year, return month in text
+    // format year, return year as string
     func yearString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         return dateFormatter.string(from: date)
     }
+    
+    //format day, return day as string
+    func dayString(date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: date)
+    }
+    
     
     // return the days in each month, some have 30 or 31 days
     func daysInMonth(date: Date) -> Int {
