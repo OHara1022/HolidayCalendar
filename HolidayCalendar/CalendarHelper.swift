@@ -36,13 +36,12 @@ class CalendarHelper {
         return dateFormatter.string(from: date)
     }
     
-    //format day, return day as string
-    func dayString(date: Date) -> String{
+    // format day, return day as string
+    func dayString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: date)
     }
-    
     
     // return the days in each month, some have 30 or 31 days
     func daysInMonth(date: Date) -> Int {
@@ -55,7 +54,7 @@ class CalendarHelper {
         let components = calendar.dateComponents([.day], from: date)
         return components.day!
     }
-    
+   
     // get first of month for each month
     func firstOfMonth(date: Date) -> Date {
         let components = calendar.dateComponents([.year, .month], from: date)

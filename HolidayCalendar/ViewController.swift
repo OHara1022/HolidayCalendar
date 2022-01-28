@@ -5,6 +5,7 @@
 //  Created by Scott O'Hara on 1/28/22.
 //
 
+import SwiftUI
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -69,7 +70,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! CalendarCell
         let date = totalSquares[indexPath.item]
         cell.dayOfMonth.text = date
-        
+
         return cell
     }
     
@@ -93,6 +94,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        collectionView.reloadData()
     }
     
+//    func requestAccessToCalendar() {
+//
+//        eventStore.requestAccess(to: EKEntityType.event, completion: {
+//            (accessGranted: Bool, error: Error?) in
+//
+//            if accessGranted == true {
+//                DispatchQueue.main.async(execute: {
+//                    getALLEvents
+//                })
+//            } else {
+//
+//            }
+//        })
+//    }
+
     // actions
     @IBAction func prevMonth(_ sender: Any) {
         selectedDate = calendarHelper.minusMonth(date: selectedDate)
