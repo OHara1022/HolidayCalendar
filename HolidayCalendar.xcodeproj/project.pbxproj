@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6630904227A49650002198A5 /* Siesta in Frameworks */ = {isa = PBXBuildFile; productRef = 6630904127A49650002198A5 /* Siesta */; };
+		6630904427A49655002198A5 /* Siesta_Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6630904327A49655002198A5 /* Siesta_Alamofire */; };
+		6652B59F27A4944F00853DF4 /* HolidaysAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */; };
 		66EAEF3727A4518100C3EE83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3627A4518100C3EE83 /* AppDelegate.swift */; };
 		66EAEF3927A4518100C3EE83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */; };
 		66EAEF3B27A4518100C3EE83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3A27A4518100C3EE83 /* ViewController.swift */; };
@@ -15,9 +18,13 @@
 		66EAEF4327A4518200C3EE83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EAEF4127A4518200C3EE83 /* LaunchScreen.storyboard */; };
 		66EAEF4B27A4567C00C3EE83 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF4A27A4567C00C3EE83 /* CalendarCell.swift */; };
 		66EAEF4D27A45C0D00C3EE83 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF4C27A45C0D00C3EE83 /* CalendarHelper.swift */; };
+		E23FD97CF2544EC70EB452A1 /* Pods_HolidayCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1708BEFF6F34A5623756CE50 /* Pods_HolidayCalendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C76AFEE29373BB2C54432B1 /* Pods-HolidayCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidayCalendar.release.xcconfig"; path = "Target Support Files/Pods-HolidayCalendar/Pods-HolidayCalendar.release.xcconfig"; sourceTree = "<group>"; };
+		1708BEFF6F34A5623756CE50 /* Pods_HolidayCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolidayCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaysAPI.swift; sourceTree = "<group>"; };
 		66EAEF3327A4518100C3EE83 /* HolidayCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolidayCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EAEF3627A4518100C3EE83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +35,7 @@
 		66EAEF4427A4518200C3EE83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66EAEF4A27A4567C00C3EE83 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		66EAEF4C27A45C0D00C3EE83 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		B1DBE991E239B53EAA34008B /* Pods-HolidayCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidayCalendar.debug.xcconfig"; path = "Target Support Files/Pods-HolidayCalendar/Pods-HolidayCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +43,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6630904427A49655002198A5 /* Siesta_Alamofire in Frameworks */,
+				6630904227A49650002198A5 /* Siesta in Frameworks */,
+				E23FD97CF2544EC70EB452A1 /* Pods_HolidayCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E4341BA92B0ED0F5BF3B100 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1DBE991E239B53EAA34008B /* Pods-HolidayCalendar.debug.xcconfig */,
+				0C76AFEE29373BB2C54432B1 /* Pods-HolidayCalendar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6652B5A027A495DC00853DF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1708BEFF6F34A5623756CE50 /* Pods_HolidayCalendar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		66EAEF2A27A4518100C3EE83 = {
 			isa = PBXGroup;
 			children = (
 				66EAEF3527A4518100C3EE83 /* HolidayCalendar */,
 				66EAEF3427A4518100C3EE83 /* Products */,
+				6652B5A027A495DC00853DF4 /* Frameworks */,
+				2E4341BA92B0ED0F5BF3B100 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +93,7 @@
 				66EAEF3627A4518100C3EE83 /* AppDelegate.swift */,
 				66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */,
 				66EAEF3A27A4518100C3EE83 /* ViewController.swift */,
+				6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */,
 				66EAEF4C27A45C0D00C3EE83 /* CalendarHelper.swift */,
 				66EAEF3C27A4518100C3EE83 /* Main.storyboard */,
 				66EAEF4A27A4567C00C3EE83 /* CalendarCell.swift */,
@@ -80,6 +111,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66EAEF4727A4518200C3EE83 /* Build configuration list for PBXNativeTarget "HolidayCalendar" */;
 			buildPhases = (
+				470555427B072662FD893984 /* [CP] Check Pods Manifest.lock */,
 				66EAEF2F27A4518100C3EE83 /* Sources */,
 				66EAEF3027A4518100C3EE83 /* Frameworks */,
 				66EAEF3127A4518100C3EE83 /* Resources */,
@@ -89,6 +121,10 @@
 			dependencies = (
 			);
 			name = HolidayCalendar;
+			packageProductDependencies = (
+				6630904127A49650002198A5 /* Siesta */,
+				6630904327A49655002198A5 /* Siesta_Alamofire */,
+			);
 			productName = HolidayCalendar;
 			productReference = 66EAEF3327A4518100C3EE83 /* HolidayCalendar.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 66EAEF2A27A4518100C3EE83;
+			packageReferences = (
+				66E8E32927A492A3008DEF7A /* XCRemoteSwiftPackageReference "siesta" */,
+			);
 			productRefGroup = 66EAEF3427A4518100C3EE83 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,12 +178,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		470555427B072662FD893984 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HolidayCalendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		66EAEF2F27A4518100C3EE83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				66EAEF4D27A45C0D00C3EE83 /* CalendarHelper.swift in Sources */,
+				6652B59F27A4944F00853DF4 /* HolidaysAPI.swift in Sources */,
 				66EAEF3B27A4518100C3EE83 /* ViewController.swift in Sources */,
 				66EAEF3727A4518100C3EE83 /* AppDelegate.swift in Sources */,
 				66EAEF3927A4518100C3EE83 /* SceneDelegate.swift in Sources */,
@@ -292,6 +357,7 @@
 		};
 		66EAEF4827A4518200C3EE83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1DBE991E239B53EAA34008B /* Pods-HolidayCalendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +371,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,6 +387,7 @@
 		};
 		66EAEF4927A4518200C3EE83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C76AFEE29373BB2C54432B1 /* Pods-HolidayCalendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -333,6 +401,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,6 +437,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		66E8E32927A492A3008DEF7A /* XCRemoteSwiftPackageReference "siesta" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bustoutsolutions/siesta";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6630904127A49650002198A5 /* Siesta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E8E32927A492A3008DEF7A /* XCRemoteSwiftPackageReference "siesta" */;
+			productName = Siesta;
+		};
+		6630904327A49655002198A5 /* Siesta_Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E8E32927A492A3008DEF7A /* XCRemoteSwiftPackageReference "siesta" */;
+			productName = Siesta_Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 66EAEF2B27A4518100C3EE83 /* Project object */;
 }

@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //call methods to setup Cal
         setCells()
         setMonthView()
     }
@@ -39,9 +39,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         flowLayout.itemSize = CGSize(width: width, height: height)
     }
     
-    // set month view
+    // set monthView
     func setMonthView() {
-        // remove all from array
+        // remove all elements from array
         totalSquares.removeAll()
         
         // define days in month, first day of month, and start of week
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         var count: Int = 1
         
-        // 42 is the number of sqaures we will loop thru, we need 6 rows if starting on sat, 6x7=42
+        // 42 is the number of sqaures we will loop thru, we need 6 rows if month starts  on sat, 6x7=42
         while count <= 42 {
             // check number of spaces, add 6 blank spaces
             if count <= startingSpaces || count - startingSpaces > daysInMonth {
@@ -79,35 +79,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // convert string to date
+//         convert string to date
 //        let date = totalSquares[indexPath.item]
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "dd"
-        
-        // optional bind to ensure we have data
+//
+//         optional bind to ensure we have data
 //        if let strDate = dateFormatter.date(from: date) {
 //            print(strDate)
 //            // assign selectedDate
 //            selectedDate = strDate
 //        }
-        // reload collectionView
+//         reload collectionView
 //        collectionView.reloadData()
     }
-    
-//    func requestAccessToCalendar() {
-//
-//        eventStore.requestAccess(to: EKEntityType.event, completion: {
-//            (accessGranted: Bool, error: Error?) in
-//
-//            if accessGranted == true {
-//                DispatchQueue.main.async(execute: {
-//                    getALLEvents
-//                })
-//            } else {
-//
-//            }
-//        })
-//    }
 
     // actions
     @IBAction func prevMonth(_ sender: Any) {
