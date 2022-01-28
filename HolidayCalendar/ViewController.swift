@@ -5,6 +5,7 @@
 //  Created by Scott O'Hara on 1/28/22.
 //
 
+import Siesta
 import SwiftUI
 import UIKit
 
@@ -17,15 +18,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var selectedDate = Date()
     // store date as string in array
     var totalSquares = [String]()
+    var holidays: [String] = []
     let calendarHelper = CalendarHelper()
     
     // MARK: viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //call methods to setup Cal
+        // call methods to setup Cal
         setCells()
         setMonthView()
+        
+        HolidaysAPI.holidaysResource.addObserver(self)
+        HolidaysAPI.holidaysResource.loadIfNeeded()
     }
     
     // set cells view
@@ -71,6 +76,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let date = totalSquares[indexPath.item]
         cell.dayOfMonth.text = date
 
+        print(holidays.description)
         return cell
     }
     
@@ -108,5 +114,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // override auto rotate so screen stays in portrait
     override open var shouldAutorotate: Bool {
         return false
+    }
+}
+
+extension ViewController: ResourceObserver {
+    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+        let holidays = resource.jsonArray
+            // return each element of jsonArray as Dict
+            .compactMap { $0 as? [String: Any] }
+            // traverse thru dict, return string value of holiday name
+            .compactMap { $0["name"] as? String }
+        
+        self.holidays = holidays
+        collectionView.reloadData()
     }
 }

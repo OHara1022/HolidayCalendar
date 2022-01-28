@@ -8,10 +8,7 @@
 import Foundation
 import UIKit
 
-//class to handle cell functionality
-class CalendarCell: UICollectionViewCell{
-    
+// class to handle cell functionality
+class CalendarCell: UICollectionViewCell {
     @IBOutlet var dayOfMonth: UILabel!
-    
-    
 }
