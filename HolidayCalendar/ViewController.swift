@@ -18,7 +18,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var selectedDate = Date()
     // store date as string in array
     var totalSquares = [String]()
-    var holidays: [String] = []
+    var holidays =  [String]()
+    var dateHolder = [Date]()
+    var strDateHolder = [String]()
     let calendarHelper = CalendarHelper()
     
     // MARK: viewDidLoad
@@ -67,6 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             count += 1
         }
         
+        //set month label with proper month & year
         monthLabel.text = calendarHelper.monthString(date: selectedDate) + " " + calendarHelper.yearString(date: selectedDate)
         collectionView.reloadData()
     }
@@ -124,7 +127,7 @@ extension ViewController: ResourceObserver {
             .compactMap { $0 as? [String: Any] }
             // traverse thru dict, return string value of holiday name
             .compactMap { $0["name"] as? String }
-        
+        // update holidaysArrray w/ new data
         self.holidays = holidays
         collectionView.reloadData()
     }
