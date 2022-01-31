@@ -10,6 +10,8 @@
 		6630904227A49650002198A5 /* Siesta in Frameworks */ = {isa = PBXBuildFile; productRef = 6630904127A49650002198A5 /* Siesta */; };
 		6630904427A49655002198A5 /* Siesta_Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6630904327A49655002198A5 /* Siesta_Alamofire */; };
 		6630905327A72304002198A5 /* HolidayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630905227A72304002198A5 /* HolidayCell.swift */; };
+		6630905527A86085002198A5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630905427A86085002198A5 /* Day.swift */; };
+		6630905727A860CD002198A5 /* MonthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630905627A860CD002198A5 /* MonthData.swift */; };
 		6652B59F27A4944F00853DF4 /* HolidaysAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */; };
 		66EAEF3727A4518100C3EE83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3627A4518100C3EE83 /* AppDelegate.swift */; };
 		66EAEF3927A4518100C3EE83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */; };
@@ -26,6 +28,8 @@
 		0C76AFEE29373BB2C54432B1 /* Pods-HolidayCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidayCalendar.release.xcconfig"; path = "Target Support Files/Pods-HolidayCalendar/Pods-HolidayCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		1708BEFF6F34A5623756CE50 /* Pods_HolidayCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolidayCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6630905227A72304002198A5 /* HolidayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayCell.swift; sourceTree = "<group>"; };
+		6630905427A86085002198A5 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		6630905627A860CD002198A5 /* MonthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthData.swift; sourceTree = "<group>"; };
 		6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaysAPI.swift; sourceTree = "<group>"; };
 		66EAEF3327A4518100C3EE83 /* HolidayCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolidayCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EAEF3627A4518100C3EE83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 				66EAEF4A27A4567C00C3EE83 /* CalendarCell.swift */,
 				6630905227A72304002198A5 /* HolidayCell.swift */,
 				6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */,
+				6630905427A86085002198A5 /* Day.swift */,
+				6630905627A860CD002198A5 /* MonthData.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -229,9 +235,11 @@
 			files = (
 				66EAEF4D27A45C0D00C3EE83 /* CalendarHelper.swift in Sources */,
 				6652B59F27A4944F00853DF4 /* HolidaysAPI.swift in Sources */,
+				6630905527A86085002198A5 /* Day.swift in Sources */,
 				66EAEF3B27A4518100C3EE83 /* HolidayViewController.swift in Sources */,
 				6630905327A72304002198A5 /* HolidayCell.swift in Sources */,
 				66EAEF3727A4518100C3EE83 /* AppDelegate.swift in Sources */,
+				6630905727A860CD002198A5 /* MonthData.swift in Sources */,
 				66EAEF3927A4518100C3EE83 /* SceneDelegate.swift in Sources */,
 				66EAEF4B27A4567C00C3EE83 /* CalendarCell.swift in Sources */,
 			);

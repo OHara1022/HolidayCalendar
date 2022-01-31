@@ -72,9 +72,9 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
                 totalSquares.append(String(count - startingSpaces))
             }
           
-            //MARK: make calendar populate using date obj, or convert totalSqaures to a date obj? working on best solution
-           //this gives me back an int of the number of days but i need them as dates to be able to compare the api data, or figure out logic to compare using INT?. I can try creating a dict of all the days but without confirmed date this wont work.... aaahhhh
-            
+            /* MARK: make calendar populate using date obj, or convert totalSqaures to a date obj? working on best solution
+             this gives me back an int of the number of days but i need them as dates to be able to compare the api data, or figure out logic to compare using INT?. I can try creating a dict of all the days but without confirmed date this wont work.... aaahhhh*/
+
             count += 1
         }
         
@@ -107,6 +107,7 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // display holiday in tableView
         // convert string to date
+        //this works to convert string to date or date to string, but need to populate cal with dates not ints....
 //        let date = totalSquares[indexPath.item]
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -127,7 +128,6 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func prevMonth(_ sender: Any) {
         selectedDate = calendarHelper.minusMonth(date: selectedDate)
         setMonthView()
-        tableViewController.reloadData()
     }
     
     @IBAction func nextMonth(_ sender: Any) {
