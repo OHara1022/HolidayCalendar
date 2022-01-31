@@ -81,10 +81,16 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! CalendarCell
         let date = totalSquares[indexPath.item]
         cell.dayOfMonth.text = date
-       
-        if holidayDates.contains(date) {
-            print(date)
+        
+        for day in holidayDates {
+            print(day)
+            
+            if day.contains(date) {
+                print(date)
+                cell.dayOfMonth.textColor = .red
+            }
         }
+       
 
         return cell
     }
@@ -162,12 +168,14 @@ extension HolidayViewController: ResourceObserver {
         // update holidays Arrrays w/ new data
         self.holidays = holidays
         holidayDates = holidaysDates
+//        print(self.holidays)
+//        print(self.holidayDates)
         
-        for day in holidaysDates {
+        for day in holidayDates {
             print(day)
         }
         
-        for name in holidays {
+        for name in self.holidays {
             print(name)
         }
     
