@@ -22,6 +22,8 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     var holidays = [String]()
     var holidayDates = [String]()
     let calendarHelper = CalendarHelper()
+    
+    var allDates = [Date]()
 
     // MARK: viewDidLoad
 
@@ -69,6 +71,10 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
             } else {
                 totalSquares.append(String(count - startingSpaces))
             }
+          
+            //MARK: make calendar populate using date obj, or convert totalSqaures to a date obj? working on best solution
+           //this gives me back an int of the number of days but i need them as dates to be able to compare the api data, or figure out logic to compare using INT?. I can try creating a dict of all the days but without confirmed date this wont work.... aaahhhh
+            
             count += 1
         }
         
@@ -91,7 +97,6 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
         }
        
-
         return cell
     }
     

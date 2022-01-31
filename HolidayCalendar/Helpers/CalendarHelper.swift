@@ -49,6 +49,11 @@ class CalendarHelper {
         return range.count
     }
     
+    func daysEaMonth(date: Date) -> Date {
+        let components = calendar.dateComponents([.day, .month], from: date)
+        return calendar.date(from: components)!
+    }
+   
     // get day of any month
     func daysOfMonth(date: Date) -> Int {
         let components = calendar.dateComponents([.day], from: date)
