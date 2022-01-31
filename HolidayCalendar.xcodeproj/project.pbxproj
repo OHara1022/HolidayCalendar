@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		6630904227A49650002198A5 /* Siesta in Frameworks */ = {isa = PBXBuildFile; productRef = 6630904127A49650002198A5 /* Siesta */; };
 		6630904427A49655002198A5 /* Siesta_Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6630904327A49655002198A5 /* Siesta_Alamofire */; };
+		6630905327A72304002198A5 /* HolidayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630905227A72304002198A5 /* HolidayCell.swift */; };
 		6652B59F27A4944F00853DF4 /* HolidaysAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */; };
 		66EAEF3727A4518100C3EE83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3627A4518100C3EE83 /* AppDelegate.swift */; };
 		66EAEF3927A4518100C3EE83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */; };
-		66EAEF3B27A4518100C3EE83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3A27A4518100C3EE83 /* ViewController.swift */; };
+		66EAEF3B27A4518100C3EE83 /* HolidayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAEF3A27A4518100C3EE83 /* HolidayViewController.swift */; };
 		66EAEF3E27A4518100C3EE83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EAEF3C27A4518100C3EE83 /* Main.storyboard */; };
 		66EAEF4027A4518200C3EE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EAEF3F27A4518200C3EE83 /* Assets.xcassets */; };
 		66EAEF4327A4518200C3EE83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EAEF4127A4518200C3EE83 /* LaunchScreen.storyboard */; };
@@ -24,11 +25,12 @@
 /* Begin PBXFileReference section */
 		0C76AFEE29373BB2C54432B1 /* Pods-HolidayCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidayCalendar.release.xcconfig"; path = "Target Support Files/Pods-HolidayCalendar/Pods-HolidayCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		1708BEFF6F34A5623756CE50 /* Pods_HolidayCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolidayCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6630905227A72304002198A5 /* HolidayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayCell.swift; sourceTree = "<group>"; };
 		6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaysAPI.swift; sourceTree = "<group>"; };
 		66EAEF3327A4518100C3EE83 /* HolidayCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolidayCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EAEF3627A4518100C3EE83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		66EAEF3A27A4518100C3EE83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		66EAEF3A27A4518100C3EE83 /* HolidayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayViewController.swift; sourceTree = "<group>"; };
 		66EAEF3D27A4518100C3EE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66EAEF3F27A4518200C3EE83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66EAEF4227A4518200C3EE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,9 +75,10 @@
 		6630904B27A4A566002198A5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */,
 				66EAEF4C27A45C0D00C3EE83 /* CalendarHelper.swift */,
 				66EAEF4A27A4567C00C3EE83 /* CalendarCell.swift */,
+				6630905227A72304002198A5 /* HolidayCell.swift */,
+				6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -112,7 +115,7 @@
 				66EAEF3627A4518100C3EE83 /* AppDelegate.swift */,
 				66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */,
 				6630904B27A4A566002198A5 /* Helpers */,
-				66EAEF3A27A4518100C3EE83 /* ViewController.swift */,
+				66EAEF3A27A4518100C3EE83 /* HolidayViewController.swift */,
 				66EAEF3C27A4518100C3EE83 /* Main.storyboard */,
 				6630904A27A4A4E7002198A5 /* Supporting Files */,
 				66EAEF4427A4518200C3EE83 /* Info.plist */,
@@ -226,7 +229,8 @@
 			files = (
 				66EAEF4D27A45C0D00C3EE83 /* CalendarHelper.swift in Sources */,
 				6652B59F27A4944F00853DF4 /* HolidaysAPI.swift in Sources */,
-				66EAEF3B27A4518100C3EE83 /* ViewController.swift in Sources */,
+				66EAEF3B27A4518100C3EE83 /* HolidayViewController.swift in Sources */,
+				6630905327A72304002198A5 /* HolidayCell.swift in Sources */,
 				66EAEF3727A4518100C3EE83 /* AppDelegate.swift in Sources */,
 				66EAEF3927A4518100C3EE83 /* SceneDelegate.swift in Sources */,
 				66EAEF4B27A4567C00C3EE83 /* CalendarCell.swift in Sources */,

@@ -66,4 +66,10 @@ class CalendarHelper {
         let components = calendar.dateComponents([.weekday], from: date)
         return components.weekday! - 1
     }
+    
+    // get the date for holidays
+    func getMonthDate(date: Date) -> Date {
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        return calendar.date(from: components)!
+    }
 }

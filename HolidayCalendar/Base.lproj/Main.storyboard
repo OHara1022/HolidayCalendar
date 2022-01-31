@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Holiday View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HolidayCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HolidayViewController" customModule="HolidayCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2er-TO-Xnb">
-                                <rect key="frame" x="0.0" y="176.5" width="414" height="685.5"/>
+                                <rect key="frame" x="0.0" y="176.5" width="414" height="293"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="5mk-Zy-3EW">
                                     <size key="itemSize" width="128" height="128"/>
@@ -128,23 +128,60 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Jg5-m3-c63"/>
                                 </connections>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="trW-rw-DxJ">
+                                <rect key="frame" x="0.0" y="469.5" width="414" height="392.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="holidayCell" rowHeight="60" id="glX-me-HIP" customClass="HolidayCell" customModule="HolidayCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="glX-me-HIP" id="O2J-jr-QTZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Holiday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDq-fz-SP9">
+                                                    <rect key="frame" x="20" y="20" width="57" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rDq-fz-SP9" firstAttribute="leading" secondItem="O2J-jr-QTZ" secondAttribute="leading" constant="20" symbolic="YES" id="VWW-DI-Lz5"/>
+                                                <constraint firstItem="rDq-fz-SP9" firstAttribute="centerY" secondItem="O2J-jr-QTZ" secondAttribute="centerY" id="lYM-hx-HzR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="holidayLabel" destination="rDq-fz-SP9" id="yi3-Bu-Nb6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="5Yx-tc-fwk"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zmo-cu-k1z"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="38j-s5-WeV" firstAttribute="top" secondItem="T7U-Vg-brD" secondAttribute="bottom" constant="30" id="1bx-6w-X0d"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2er-TO-Xnb" secondAttribute="bottom" id="9Ly-c1-pBZ"/>
                             <constraint firstItem="2er-TO-Xnb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9vz-mQ-fE6"/>
                             <constraint firstItem="T7U-Vg-brD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CFV-Id-pau"/>
                             <constraint firstItem="wus-6k-nIo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CeN-LV-VUO"/>
                             <constraint firstItem="wus-6k-nIo" firstAttribute="centerY" secondItem="T7U-Vg-brD" secondAttribute="centerY" id="He6-Dw-eGJ"/>
                             <constraint firstItem="vC2-QB-CsL" firstAttribute="centerY" secondItem="T7U-Vg-brD" secondAttribute="centerY" id="Hfp-8e-iJy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="trW-rw-DxJ" secondAttribute="trailing" id="Hn4-zk-Bp6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="38j-s5-WeV" secondAttribute="trailing" id="L6k-40-do4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="trW-rw-DxJ" secondAttribute="bottom" id="MQ0-kT-tEq"/>
                             <constraint firstItem="T7U-Vg-brD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="21" id="eqX-BR-wM2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2er-TO-Xnb" secondAttribute="trailing" id="gSb-zS-VxA"/>
                             <constraint firstItem="vC2-QB-CsL" firstAttribute="leading" secondItem="T7U-Vg-brD" secondAttribute="trailing" id="gnt-EU-VfY"/>
+                            <constraint firstItem="trW-rw-DxJ" firstAttribute="height" secondItem="2er-TO-Xnb" secondAttribute="height" constant="100" id="hwe-wk-hph"/>
+                            <constraint firstItem="trW-rw-DxJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kuX-Wn-qP8"/>
                             <constraint firstItem="2er-TO-Xnb" firstAttribute="top" secondItem="38j-s5-WeV" secondAttribute="bottom" id="nYe-b8-k3E"/>
                             <constraint firstItem="38j-s5-WeV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oQh-tS-d6d"/>
+                            <constraint firstItem="trW-rw-DxJ" firstAttribute="top" secondItem="2er-TO-Xnb" secondAttribute="bottom" id="uSd-XP-TYp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vC2-QB-CsL" secondAttribute="trailing" id="yYg-Dr-BdR"/>
                             <constraint firstItem="T7U-Vg-brD" firstAttribute="leading" secondItem="wus-6k-nIo" secondAttribute="trailing" id="zo6-dh-xSb"/>
                         </constraints>
@@ -152,6 +189,7 @@
                     <connections>
                         <outlet property="collectionView" destination="2er-TO-Xnb" id="U1N-Ln-Uzs"/>
                         <outlet property="monthLabel" destination="T7U-Vg-brD" id="bdP-2k-LEo"/>
+                        <outlet property="tableViewController" destination="trW-rw-DxJ" id="Yse-qh-6Zz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
