@@ -20,13 +20,8 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     // store date as string in array
     var totalSquares = [String]()
     var holidays = [String]()
-    var holidaysDates = [String]()
-    var holidayDate = String()
+    var holidayDates = [String]()
     let calendarHelper = CalendarHelper()
-    
-    var dateHelper = Date()
-   
-    var allHolidays = [String: String]()
 
     // MARK: viewDidLoad
 
@@ -35,7 +30,7 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         // call methods to setup Cal
         setCells()
         setMonthView()
-
+       
         // add observer for api call
         HolidaysAPI.holidaysResource.addObserver(self)
     }
@@ -79,7 +74,6 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         // set month label with proper month & year
         monthLabel.text = calendarHelper.monthString(date: selectedDate) + " " + calendarHelper.yearString(date: selectedDate)
-
         collectionView.reloadData()
     }
     
@@ -87,11 +81,11 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! CalendarCell
         let date = totalSquares[indexPath.item]
         cell.dayOfMonth.text = date
-      
-        if holidayDate.description == date {
-            cell.dayOfMonth.textColor = .red
+       
+        if holidayDates.contains(date) {
+            print(date)
         }
-     
+
         return cell
     }
     
@@ -102,10 +96,10 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // display holiday in tableView
         // convert string to date
-        let date = totalSquares[indexPath.item]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        print(date)
+//        let date = totalSquares[indexPath.item]
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd-MM-yyyy"
+//        print(date)
      
         // MARK: figure out last step!
 
@@ -167,7 +161,16 @@ extension HolidayViewController: ResourceObserver {
 //        print(holidaysDates)
         // update holidays Arrrays w/ new data
         self.holidays = holidays
-        self.holidaysDates = holidaysDates
+        holidayDates = holidaysDates
+        
+        for day in holidaysDates {
+            print(day)
+        }
+        
+        for name in holidays {
+            print(name)
+        }
+    
         collectionView.reloadData()
     }
 }
