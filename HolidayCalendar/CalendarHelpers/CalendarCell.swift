@@ -27,7 +27,7 @@ class CalendarCell: UICollectionViewCell {
     // override isSelected, set up cell state for
     override var isSelected: Bool {
         didSet {
-            setupLabelState(isSelected: isSelected)
+            setupLabelState(isSelected: isSelected)//set active and inActive states
         }
     }
     

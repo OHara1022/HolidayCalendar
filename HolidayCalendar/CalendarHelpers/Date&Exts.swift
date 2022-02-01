@@ -51,18 +51,22 @@ extension Date {
 extension HolidayViewController {
     // create calendar with details
     func generateCalender() {
+        //get intial date of current month on load
         let initialDate = calendar.date(byAdding: .month, value: currentMonthIndex, to: Date())!
         currentMonth = initialDate
          
+        //get cal components
         let components = calendar.dateComponents([.year, .month], from: initialDate)
-         
+        //brekadown components for month view
         let firstDayOfMonth = calendar.date(from: components)!
         let firstDayOfWeekday = calendar.dateComponents([.weekday], from: firstDayOfMonth).weekday ?? 0
         let totalDayInMonth = calendar.range(of: .day, in: .month, for: initialDate)?.count ?? 0
                  
+        //remove all days, before adding
         days.removeAll()
         var offset: Int = 35
 
+        //logic for days and weeks in month
         for i in 1..<firstDayOfWeekday {
             let date = Date.addingDateIntervalByDay(day: -(firstDayOfWeekday - i), date: firstDayOfMonth)
             let day = Day(
@@ -96,10 +100,12 @@ extension HolidayViewController {
                 offset -= 1
             }
         }
-         
+        
+        //set label with month and year
         monthLabel.text = "\(initialDate.monthSymbols) \(initialDate.year)"
-         
+        
         if isInitial {
+            //filter array returning elements in order by date
             selectedDate = days.filter { $0.date.shortDateFormat == Date().shortDateFormat }.first
             isInitial = false
         }

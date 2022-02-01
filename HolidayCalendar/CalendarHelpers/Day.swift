@@ -7,13 +7,10 @@
 
 import Foundation
 
-//create Day as equatable for date and month operations
+// create Day as equatable for date and month operations
 struct Day: Equatable {
     let date: Date
     let dayNumber: String
     var isNextMonth: Bool = false
     var isPreviousMonth: Bool = false
-
 }
-
-
