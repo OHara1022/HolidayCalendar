@@ -9,16 +9,39 @@ import Siesta
 import SwiftUI
 import UIKit
 
-class HolidayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class HolidayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     // outlets
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var tableViewController: UITableView!
+//    @IBOutlet var tableViewController: UITableView!
+    @IBOutlet var holidayLabel: UILabel!
     
     // store date as string in array
     var holidays = [String]()
     var holidayDates = [String]()
+    var newDay = String()
+    let calendar = Calendar(identifier: .gregorian)
+    var didSelectDate: ((Day?) -> ())?
+    var currentMonth: Date!
+    var days: [Day] = []
+    var isInitial: Bool = true
+    var style = CalenderStyle()
+    var holidayName = String()
 
+    // set optional Day obj to selected date
+    var selectedDate: Day? {
+        didSet {
+            didSelectDate?(selectedDate)
+        }
+    }
+
+    // get index for each month, populate calendar
+    var currentMonthIndex: Int = 0 {
+        didSet {
+            generateCalender()
+            collectionView.reloadData()
+        }
+    }
 
     // MARK: viewDidLoad
 
@@ -27,7 +50,14 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         // call methods to setup Cal
         setCells()
         generateCalender()
-       
+        
+        // MARK: set text to date or holiday info on selection -TODO, get holidays to populate on selection!!!(last step)
+
+        didSelectDate = { [weak self] selectedDate in
+            guard let self = self else { return }
+            self.holidayLabel.text = selectedDate?.date.shortDateFormat
+        }
+
         // add observer for api call
         HolidaysAPI.holidaysResource.addObserver(self)
     }
@@ -49,24 +79,25 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! CalendarCell
-        
         let day = days[indexPath.row]
-        
-        cell.configureCell(day: day, isSelected: day == selectedDate, style: style)
-        
+        // get string from date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let newDay = dateFormatter.string(from: day.date)
-        print(newDay)
+        newDay = dateFormatter.string(from: day.date)
+//        print(newDay)
         
-        for day in holidayDates{
-            if newDay == day{
-                print(newDay)
+        // config cell
+        cell.configureCell(day: day, isSelected: day == selectedDate, style: style)
+
+        // loop thru dates retrieved from api
+        for day in holidayDates {
+            // check if day within current month has a holiday, set to red
+            if newDay == day {
+//                print(newDay)
                 cell.dayOfMonth.textColor = .red
             }
         }
         
-       
         return cell
     }
     
@@ -75,7 +106,6 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-  
         let day = days[indexPath.row]
         selectedDate = day
                 
@@ -90,15 +120,11 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // actions
     @IBAction func prevMonth(_ sender: Any) {
-//        selectedDate = calendarHelper.minusMonth(date: selectedDate)
-//        setMonthView()
         currentMonthIndex -= 1
         selectedDate = nil
     }
     
     @IBAction func nextMonth(_ sender: Any) {
-//        selectedDate = calendarHelper.plusMonth(date: selectedDate)
-//        setMonthView()
         currentMonthIndex += 1
         selectedDate = nil
     }
@@ -106,39 +132,6 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     // override auto rotate so screen stays in portrait
     override open var shouldAutorotate: Bool {
         return false
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(holidays.count)
-        return holidays.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "holidayCell", for: indexPath) as! HolidayCell
-
-        cell.holidayLabel.text = holidays[indexPath.row]
-        cell.holidayLabel.textColor = .red
-        return cell
-    }
-    
-    private let calendar = Calendar(identifier: .gregorian)
-    var didSelectDate: ((Day?) -> ())?
-    private var currentMonth: Date!
-    private var days: [Day] = []
-    private var isInitial: Bool = true
-    var style = CalenderStyle()
-    
-    private var selectedDate: Day? {
-        didSet {
-            didSelectDate?(selectedDate)
-        }
-    }
-
-    private var currentMonthIndex: Int = 0 {
-        didSet {
-            generateCalender()
-            collectionView.reloadData()
-        }
     }
 }
 
@@ -170,67 +163,9 @@ extension HolidayViewController: ResourceObserver {
         
 //        for name in self.holidays {
 //            print(name)
+//            holidayName = name
 //        }
     
         collectionView.reloadData()
-    }
-}
-
-extension HolidayViewController {
-    private func generateCalender() {
-        let initialDate = calendar.date(byAdding: .month, value: currentMonthIndex, to: Date())!
-        currentMonth = initialDate
-        
-        let components = calendar.dateComponents([.year, .month], from: initialDate)
-        
-        let firstDayOfMonth = calendar.date(from: components)!
-        let firstDayOfWeekday = calendar.dateComponents([.weekday], from: firstDayOfMonth).weekday ?? 0
-        let totalDayInMonth = calendar.range(of: .day, in: .month, for: initialDate)?.count ?? 0
-                
-        days.removeAll()
-        var offset: Int = 35
-
-        for i in 1..<firstDayOfWeekday {
-            let date = Date.addingDateIntervalByDay(day: -(firstDayOfWeekday - i), date: firstDayOfMonth)
-            let day = Day(
-                date: Date.addingDateIntervalByMonth(month: 0, date: date),
-                dayNumber: date.getTheDayIndex,
-                isPreviousMonth: true
-            )
-            days.append(day)
-            offset -= 1
-        }
-        
-        for i in 0..<totalDayInMonth {
-            let date = Date.addingDateIntervalByDay(day: i, date: firstDayOfMonth)
-            let day = Day(
-                date: date,
-                dayNumber: date.getTheDayIndex
-            )
-            days.append(day)
-            offset -= 1
-        }
-        
-        if offset > 0 {
-            for i in 0..<offset {
-                let date = Date.addingDateIntervalByDay(day: i, date: firstDayOfMonth)
-                let day = Day(
-                    date: Date.addingDateIntervalByMonth(month: 1, date: date),
-                    dayNumber: date.getTheDayIndex,
-                    isNextMonth: true
-                )
-                days.append(day)
-                offset -= 1
-            }
-        }
-        
-        monthLabel.text = "\(initialDate.monthSymbols) \(initialDate.year)"
-        
-        if isInitial {
-            selectedDate = days.filter { $0.date.shortDateFormat == Date().shortDateFormat }.first
-            isInitial = false
-        }
-        
-        selectedDate = days.filter { $0.date.shortDateFormat == selectedDate?.date.shortDateFormat }.first
     }
 }

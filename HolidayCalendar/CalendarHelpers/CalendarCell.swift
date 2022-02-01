@@ -15,7 +15,6 @@ class CalendarCell: UICollectionViewCell {
     // get cal style and properties for each cell
     private var style: CalenderStyle!
     private var day: Day!
-    let holidayViewController = HolidayViewController()
     
     func configureCell(day: Day, isSelected: Bool, style: CalenderStyle) {
         self.day = day // set day
