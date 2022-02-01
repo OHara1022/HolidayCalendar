@@ -16,7 +16,7 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
 //    @IBOutlet var tableViewController: UITableView!
     @IBOutlet var holidayLabel: UILabel!
     
-    // store date as string in array
+    // stored properties for calendar
     var holidays = [String]()
     var holidayDates = [String]()
     var newDay = String()
