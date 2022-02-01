@@ -41,7 +41,7 @@ class CalendarCell: UICollectionViewCell {
                 self.dayOfMonth.layer.backgroundColor = style.backgroundColor.cgColor
                 self.dayOfMonth.textColor = style.textColor
             } else {
-                // else ifnext or prev month is in view display inActive in grey text
+                // else if next or prev month is in view display inActive in grey text
                 guard !self.day.isNextMonth, !self.day.isPreviousMonth else { return }
                 let style = self.style.inActiveDate
                 self.dayOfMonth.textColor = style.textColor

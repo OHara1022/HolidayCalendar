@@ -15,28 +15,10 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableViewController: UITableView!
     
-    //properties for calendar & holidays
-    private let calendar = Calendar(identifier: .gregorian)
+    // store date as string in array
     var holidays = [String]()
     var holidayDates = [String]()
-    var style = CalenderStyle()
-    var didSelectDate: ((Day?) -> ())?
-    private var currentMonth: Date!
-    private var days: [Day] = []
-    private var isInitial: Bool = true
-   
-    private var selectedDate: Day? {
-        didSet {
-            didSelectDate?(selectedDate)
-        }
-    }
 
-    private var currentMonthIndex: Int = 0 {
-        didSet {
-            generateCalender()
-            collectionView.reloadData()
-        }
-    }
 
     // MARK: viewDidLoad
 
@@ -71,6 +53,19 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         let day = days[indexPath.row]
         
         cell.configureCell(day: day, isSelected: day == selectedDate, style: style)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newDay = dateFormatter.string(from: day.date)
+        print(newDay)
+        
+        for day in holidayDates{
+            if newDay == day{
+                print(newDay)
+                cell.dayOfMonth.textColor = .red
+            }
+        }
+        
        
         return cell
     }
@@ -80,6 +75,7 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  
         let day = days[indexPath.row]
         selectedDate = day
                 
@@ -94,22 +90,29 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // actions
     @IBAction func prevMonth(_ sender: Any) {
+//        selectedDate = calendarHelper.minusMonth(date: selectedDate)
+//        setMonthView()
         currentMonthIndex -= 1
         selectedDate = nil
     }
     
     @IBAction func nextMonth(_ sender: Any) {
+//        selectedDate = calendarHelper.plusMonth(date: selectedDate)
+//        setMonthView()
         currentMonthIndex += 1
         selectedDate = nil
     }
     
-    //tableView rows set to holidays array
+    // override auto rotate so screen stays in portrait
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // print(holidays.count)
+//        print(holidays.count)
         return holidays.count
     }
     
-    //display the selected holiday in tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "holidayCell", for: indexPath) as! HolidayCell
 
@@ -118,9 +121,24 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
     
-    // override auto rotate so screen stays in portrait
-    override open var shouldAutorotate: Bool {
-        return false
+    private let calendar = Calendar(identifier: .gregorian)
+    var didSelectDate: ((Day?) -> ())?
+    private var currentMonth: Date!
+    private var days: [Day] = []
+    private var isInitial: Bool = true
+    var style = CalenderStyle()
+    
+    private var selectedDate: Day? {
+        didSet {
+            didSelectDate?(selectedDate)
+        }
+    }
+
+    private var currentMonthIndex: Int = 0 {
+        didSet {
+            generateCalender()
+            collectionView.reloadData()
+        }
     }
 }
 
@@ -131,7 +149,7 @@ extension HolidayViewController: ResourceObserver {
             .compactMap { $0 as? [String: Any] }
             // traverse thru dict, return string value of holiday name
             .compactMap { $0["name"] as? String }
-        // print(holidays)
+//        print(holidays)
         
         let holidaysDates = resource.jsonArray
             // return each element of jsonArray as Dict
@@ -146,13 +164,13 @@ extension HolidayViewController: ResourceObserver {
 //        print(self.holidays)
 //        print(self.holidayDates)
         
-        for day in holidayDates {
-            print(day)
-        }
+//        for day in holidayDates {
+//            print(day)
+//        }
         
-        for name in self.holidays {
-            print(name)
-        }
+//        for name in self.holidays {
+//            print(name)
+//        }
     
         collectionView.reloadData()
     }
@@ -214,6 +232,5 @@ extension HolidayViewController {
         }
         
         selectedDate = days.filter { $0.date.shortDateFormat == selectedDate?.date.shortDateFormat }.first
-
     }
 }
