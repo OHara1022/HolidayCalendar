@@ -74,12 +74,12 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6630904B27A4A566002198A5 /* API_Helpers */ = {
+		6630904B27A4A566002198A5 /* API_Helper */ = {
 			isa = PBXGroup;
 			children = (
 				6652B59E27A4944F00853DF4 /* HolidaysAPI.swift */,
 			);
-			path = API_Helpers;
+			path = API_Helper;
 			sourceTree = "<group>";
 		};
 		6652B5A027A495DC00853DF4 /* Frameworks */ = {
@@ -114,7 +114,7 @@
 				66EAEF3627A4518100C3EE83 /* AppDelegate.swift */,
 				66EAEF3827A4518100C3EE83 /* SceneDelegate.swift */,
 				66FBA1DC27A8950C005623BF /* CalendarHelpers */,
-				6630904B27A4A566002198A5 /* API_Helpers */,
+				6630904B27A4A566002198A5 /* API_Helper */,
 				66EAEF3A27A4518100C3EE83 /* HolidayViewController.swift */,
 				66EAEF3C27A4518100C3EE83 /* Main.storyboard */,
 				6630904A27A4A4E7002198A5 /* Supporting Files */,

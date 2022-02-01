@@ -13,6 +13,7 @@ struct Day: Equatable {
     let dayNumber: String
     var isNextMonth: Bool = false
     var isPreviousMonth: Bool = false
+
 }
 
 

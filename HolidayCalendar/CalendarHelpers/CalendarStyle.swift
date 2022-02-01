@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//set style properties, blue for currentDat, grey for outOfRangem and black for days
 struct CalenderStyle {
     var outOfRangeDate: UIColor = .systemGray
     var activeDate = ActiveDate()

@@ -7,31 +7,30 @@
 
 import Foundation
 
-//extension of date variables we can use to populate and compare dates from api
+// extension of date variables we can use to populate and compare dates from api
 extension Date {
-    
-    //get dayIndex for first of week
+    // get dayIndex for first of week
     var getTheDayIndex: String {
         return String(Calendar.current.component(.day, from: self))
     }
     
-    //get day
+    // get day
     var day: Int {
         return Calendar.current.component(.day, from: self)
     }
     
-    //get year
+    // get year
     var year: Int {
         return Calendar.current.component(.year, from: self)
     }
     
-    //get monthSymbols
+    // get monthSymbols
     var monthSymbols: String {
         let monthIndex = Calendar.current.component(.month, from: self)
         return Calendar.current.monthSymbols[monthIndex - 1]
     }
     
-    //get short date format, matchs api format
+    // get short date format, matchs api format
     var shortDateFormat: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -47,20 +46,20 @@ extension Date {
         let calendar = Calendar(identifier: .gregorian)
         return calendar.date(byAdding: .day, value: day, to: date) ?? Date()
     }
-    
 }
 
 extension HolidayViewController {
-     func generateCalender() {
+    // create calendar with details
+    func generateCalender() {
         let initialDate = calendar.date(byAdding: .month, value: currentMonthIndex, to: Date())!
         currentMonth = initialDate
-        
+         
         let components = calendar.dateComponents([.year, .month], from: initialDate)
-        
+         
         let firstDayOfMonth = calendar.date(from: components)!
         let firstDayOfWeekday = calendar.dateComponents([.weekday], from: firstDayOfMonth).weekday ?? 0
         let totalDayInMonth = calendar.range(of: .day, in: .month, for: initialDate)?.count ?? 0
-                
+                 
         days.removeAll()
         var offset: Int = 35
 
@@ -74,7 +73,7 @@ extension HolidayViewController {
             days.append(day)
             offset -= 1
         }
-        
+         
         for i in 0..<totalDayInMonth {
             let date = Date.addingDateIntervalByDay(day: i, date: firstDayOfMonth)
             let day = Day(
@@ -84,7 +83,7 @@ extension HolidayViewController {
             days.append(day)
             offset -= 1
         }
-        
+         
         if offset > 0 {
             for i in 0..<offset {
                 let date = Date.addingDateIntervalByDay(day: i, date: firstDayOfMonth)
@@ -97,14 +96,14 @@ extension HolidayViewController {
                 offset -= 1
             }
         }
-        
+         
         monthLabel.text = "\(initialDate.monthSymbols) \(initialDate.year)"
-        
+         
         if isInitial {
             selectedDate = days.filter { $0.date.shortDateFormat == Date().shortDateFormat }.first
             isInitial = false
         }
-        
+         
         selectedDate = days.filter { $0.date.shortDateFormat == selectedDate?.date.shortDateFormat }.first
     }
 }

@@ -16,7 +16,7 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
 //    @IBOutlet var tableViewController: UITableView!
     @IBOutlet var holidayLabel: UILabel!
     
-    // stored properties for calendar
+    // store date as string in array
     var holidays = [String]()
     var holidayDates = [String]()
     var newDay = String()
@@ -27,6 +27,8 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     var isInitial: Bool = true
     var style = CalenderStyle()
     var holidayName = String()
+    var hasHolidays = false
+    var holidayDict = [String: String]()
 
     // set optional Day obj to selected date
     var selectedDate: Day? {
@@ -57,7 +59,7 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
             guard let self = self else { return }
             self.holidayLabel.text = selectedDate?.date.shortDateFormat
         }
-
+            
         // add observer for api call
         HolidaysAPI.holidaysResource.addObserver(self)
     }
@@ -90,11 +92,12 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.configureCell(day: day, isSelected: day == selectedDate, style: style)
 
         // loop thru dates retrieved from api
-        for day in holidayDates {
+        for days in holidayDates {
             // check if day within current month has a holiday, set to red
-            if newDay == day {
+            if newDay == days {
 //                print(newDay)
                 cell.dayOfMonth.textColor = .red
+                hasHolidays = true
             }
         }
         
@@ -108,11 +111,22 @@ class HolidayViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let day = days[indexPath.row]
         selectedDate = day
-                
-        if day.isNextMonth {
-            currentMonthIndex += 1
-        } else if day.isPreviousMonth {
-            currentMonthIndex -= 1
+//        print(selectedDate!.date.description)
+        
+        if selectedDate!.date == day.date, hasHolidays == true {
+            print("hit")
+            print(selectedDate!.date.description)
+            print(day.date)
+            for (key, value) in holidayDict {
+                print("\(key) = \(value)")
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                newDay = dateFormatter.string(from: day.date)
+                if newDay == value {
+                    print("WORKING")
+                    holidayLabel.text = key
+                }
+            }
         }
         
         collectionView.reloadData()
@@ -156,16 +170,11 @@ extension HolidayViewController: ResourceObserver {
         holidayDates = holidaysDates
 //        print(self.holidays)
 //        print(self.holidayDates)
+        for i in 0 ..< min(self.holidays.count, holidayDates.count) {
+            holidayDict[self.holidays[i]] = holidayDates[i]
+        }
         
-//        for day in holidayDates {
-//            print(day)
-//        }
-        
-//        for name in self.holidays {
-//            print(name)
-//            holidayName = name
-//        }
-    
+//        print(holidayDict)
         collectionView.reloadData()
     }
 }
